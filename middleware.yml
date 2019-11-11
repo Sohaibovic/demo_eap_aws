@@ -48,7 +48,7 @@
       set_fact:
         ips: "{{ item }}"
       with_inventory_hostnames:
-        - tag_Role_eap:&tag_Name_{{scope}}
+        - tag_Role_eap
 
     - name: Display EAP IP Address
       debug:
