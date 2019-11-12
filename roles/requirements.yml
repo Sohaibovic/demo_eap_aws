@@ -16,3 +16,7 @@
 - src: https://github.com/automaticdavid/ec2
   version: devel
   name: ec2
+  
+- src: https://github.com/automaticdavid/hc_vault_mssql_mgmt.git
+  version: master
+  name: hc_mssql
