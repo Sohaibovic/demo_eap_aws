@@ -61,7 +61,7 @@
       yum:
         name: mssql-server
         state: latest
-
+        
     - name: Setup the MS-SQL Tools Repository
       yum_repository:
         name: packages-microsoft-com-prod
@@ -95,6 +95,11 @@
          MSSQL_SA_PASSWORD: "{{ sql_sa_password }}"
          MSSQL_PID: express 
       no_log: True
+      
+    - name: Stop MS-SQL
+      systemd:
+        name: mssql-server
+        state: stopped
 
     - name: Run MS-SQL Configuration
       command:  /opt/mssql/bin/mssql-conf -n setup accept-eula
