@@ -17,7 +17,7 @@
       service: 
         name: "{{ jboss_eap_service_file }}"
         state: stopped
-      ignore_error: yes
+      ignore_errors: yes
 
 
     # - name: Remove Java
@@ -34,21 +34,21 @@
       file: 
         path: "{{ jboss_eap_library_dest_dir }}"
         state: absent
-      ignore_error: yes
+      ignore_errors: yes
 
 
     - name: Remove JBoss EAP User
       user:
         name: 'jboss-as'
         state: absent 
-      ignore_error: yes
+      ignore_errors: yes
 
 
     - name: Remove JBoss EAP Group
       group:
         name: 'jboss_as'
         state: absent
-      ignore_error: yes
+      ignore_errors: yes
 
     
 - name: Remove MS-SQL
@@ -61,5 +61,5 @@
     - yum: 
         name: mssql-server
         state: absent
-      ignore_error: yes
+      ignore_errors: yes
 
