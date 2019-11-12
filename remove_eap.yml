@@ -58,7 +58,7 @@
 
   tasks: 
   
-    - command: systemctl stop mssql-server
+    - command: sudo systemctl stop mssql-server
       ignore_errors: yes
 
   
