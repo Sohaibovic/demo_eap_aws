@@ -55,6 +55,13 @@
         var: ips
         verbosity: 2
         
+    - name: Return all secrets from a path
+      debug:
+        msg: "{{ lookup('hashi_vault', 'secret=hc_lookup'}}"
+      vars: 
+        hc_lookup: "/database/creds/{{ ansible_hostname }}_mssql_db token={{ hc_vault_token }} url={{ hc_vault_server }}"
+
+        
     - name: Install needed utilities packages
       yum:
         name: "{{ item }}"
