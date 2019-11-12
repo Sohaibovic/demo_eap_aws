@@ -58,6 +58,12 @@
 
   tasks: 
   
+    - service:
+        name: mssql-server
+        state: stopped
+      ignore_errors: yes
+
+  
     - yum: 
         name: mssql-server
         state: absent
