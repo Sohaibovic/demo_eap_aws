@@ -19,7 +19,7 @@
       set_fact:
         sqlip: "{{ item }}"
       with_inventory_hostnames:
-        - tag_Role_mssql
+        - tag_Name_mssql
 
     - name: Display MS-SQL IP Address
       debug:
@@ -48,7 +48,7 @@
       set_fact:
         ips: "{{ item }}"
       with_inventory_hostnames:
-        - tag_Role_eap
+        - tag_Name_eap
 
     - name: Display EAP IP Address
       debug:
