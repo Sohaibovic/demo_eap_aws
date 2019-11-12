@@ -4,6 +4,7 @@
 - name: EAP actions
   hosts: tag_Name_eap
   become: yes
+  ignore_error: yes
 
   tasks: 
 
@@ -47,6 +48,8 @@
   hosts: tag_Name_mssql
   become: True
   gather_facts: yes
+  ignore_error: yes
+
 
   tasks: 
   
