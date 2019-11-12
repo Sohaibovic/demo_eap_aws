@@ -58,7 +58,7 @@
 
   tasks: 
   
-    - service:
+    - systemd:
         name: mssql-server
         state: stopped
       ignore_errors: yes
