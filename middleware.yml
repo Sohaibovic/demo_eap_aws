@@ -26,24 +26,6 @@
         var: sqlip
         verbosity: 2
 
-    - name: Find MS-SQL password
-      set_fact:
-        sqlpass: "{{ hostvars[sqlip]['db_password'] }}"
-
-    - name: Find MS-SQL user
-      set_fact:
-        sqluser: "{{ hostvars[sqlip]['db_user'] }}"
-
-    - name: Display MS-SQL password
-      debug:
-        var: sqlpass
-        verbosity: 2
-
-    - name: Display MS-SQL user
-      debug:
-        var: sqluser
-        verbosity: 2
-
     - name: Find EAP VMs IP addresses
       set_fact:
         ips: "{{ item }}"
@@ -56,11 +38,18 @@
         verbosity: 2
         
     - name: Return all secrets from a path
-      debug:
-        msg: "{{ lookup('hashi_vault', 'secret=' + hc_lookup)}}"
+      set_fact:
+        db_secrets: "{{ lookup('hashi_vault', 'secret=' + hc_lookup)}}"
       vars: 
         hc_lookup: "/database/creds/readwrite token={{ hc_vault_token }} url={{ hc_vault_server }}"
 
+    - name: Find MS-SQL password
+      set_fact:
+        sqlpass: "{{ db_secrets.password }}"
+
+    - name: Find MS-SQL user
+      set_fact:
+        sqluser: "{{ db_secrets.username }}"
         
     - name: Install needed utilities packages
       yum:
