@@ -2,7 +2,7 @@
 ---
 
 - name: EAP actions
-  hosts: "{{ scope }}"
+  hosts: tag_Name_eap
   become: yes
 
   tasks: 
@@ -43,41 +43,13 @@
         name: 'jboss_as'
         state: absent
     
-- name: Remove F5 configuration
-  hosts: "{{ scope }}"
-  connection: local
-      
-  tasks:
-      
-    - name: Ensure Nodes are absent in F5 Load Balancer
-      vars:
-        bigip_node_port: "8080"
-        bigip_node_ip: "{{ ansible_host }}"
-      include_role:
-        name: nehrman.ansible-role-f5
-        tasks_from: remove_apps_to_f5.yml
-      when: jboss_eap_ha
+- name: Remove MS-SQL
+  hosts: tag_Name_mssql
+  become: True
+  gather_facts: yes
 
-    # - name: Close TCP port for EAP
-    #   firewalld:
-    #     port: 8080/tcp
-    #     state: disabled 
-
-    # - name: Remove firewalld
-    #   yum:
-    #     name: firewalld
-    #     state: absent
-
-    # - name: Clean up downloads
-    #   file:
-    #     name: "/tmp/{{ item }}"
-    #     state: absent
-    #   with_items:
-    #     - epel-release-latest-7.noarch.rpm
-    #     - jboss-eap-7.1.0.zip
-    #     - jboss-eap-7.1.2-patch.zip
-    #     - coolstore.war
-
-    # - name: Undo HA config
-    #   pass: 
-
+  tasks: 
+  
+    - yum: 
+        name: mssql-server
+        state: absent
