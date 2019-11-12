@@ -149,5 +149,17 @@
     - name: Create the mssql local fact 
       template:
         src: templates/mssql.fact.j2
-        dest: "/etc/ansible/facts.d/{{ inventory_hostname }}.fact"
+        dest: "/etc/ansible/facts.d/{{ inventory_hostname }}.fact" 
+        
+    - name: Configure MSSQL for Hashicorp Vault 
+      include_role:
+        name: hc_mssql
+        tasks_from: mssql.yml
+      vars:
+        mssql_username: "{{ db_user }}"
+        mssql_password: "{{ db_password }}"
+        mssql_db: "{{ db_name }}"
+    
+    
+    
 
