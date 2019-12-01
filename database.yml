@@ -1,6 +1,6 @@
 ---
 - name: Install & Configure MS-SQL
-  hosts: tag_Name_mssql
+  hosts: tag_Role_database:&tag_Name_{{scope}}
   become: True
   gather_facts: yes
 

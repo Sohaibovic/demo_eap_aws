@@ -1,6 +1,6 @@
 ---
 - name: Install & Configure JBoss EAP
-  hosts: tag_Name_eap
+  hosts: tag_Role_eap:&tag_Name_{{scope}}
   gather_facts: yes
   become: yes
 
@@ -19,7 +19,7 @@
       set_fact:
         sqlip: "{{ item }}"
       with_inventory_hostnames:
-        - tag_Name_mssql
+        - tag_Role_eap:&tag_Name_{{scope}}
 
     - name: Display MS-SQL IP Address
       debug:
@@ -30,26 +30,26 @@
       set_fact:
         ips: "{{ item }}"
       with_inventory_hostnames:
-        - tag_Name_eap
+        - tag_Role_eap:&tag_Name_{{scope}}
 
     - name: Display EAP IP Address
       debug:
         var: ips
         verbosity: 2
         
-    - name: Return all secrets from a path
-      set_fact:
-        db_secrets: "{{ lookup('hashi_vault', 'secret=' + hc_lookup)}}"
-      vars: 
-        hc_lookup: "/database/creds/readwrite token={{ hc_vault_token }} url={{ hc_vault_server }}"
+    # - name: Return all secrets from a path
+    #   set_fact:
+    #     db_secrets: "{{ lookup('hashi_vault', 'secret=' + hc_lookup)}}"
+    #   vars: 
+    #     hc_lookup: "/database/creds/readwrite token={{ hc_vault_token }} url={{ hc_vault_server }}"
 
-    - name: Find MS-SQL password
-      set_fact:
-        sqlpass: "{{ db_secrets.password }}"
+    # - name: Find MS-SQL password
+    #   set_fact:
+    #     sqlpass: "{{ db_secrets.password }}"
 
-    - name: Find MS-SQL user
-      set_fact:
-        sqluser: "{{ db_secrets.username }}"
+    # - name: Find MS-SQL user
+    #   set_fact:
+    #     sqluser: "{{ db_secrets.username }}"
         
     - name: Install needed utilities packages
       yum:
