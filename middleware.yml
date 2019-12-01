@@ -50,7 +50,15 @@
     # - name: Find MS-SQL user
     #   set_fact:
     #     sqluser: "{{ db_secrets.username }}"
-        
+
+    - name: Find MS-SQL password
+      set_fact:
+        sqlpass:  "{{ hostvars.fact_store.eap_facts.db_password }}"
+
+    - name: Find MS-SQL user
+      set_fact:
+        sqluser:"{{ hostvars.fact_store.eap_facts.db_user }}"
+
     - name: Install needed utilities packages
       yum:
         name: "{{ item }}"

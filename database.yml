@@ -129,17 +129,15 @@
         var: sql_sa_password
         verbosity: 2
 
-    - name: Set memory fact for SA Password
+    - name: Record needed facts from the newly provisioned infrastructure
       set_fact:
-        db_password: "{{ sql_sa_password }}"
-
-    - name: Set memory fact for DB name 
-      set_fact:
-        db_name: "{{ db_name }}"
-
-    - name: Set memory fact for DB user 
-      set_fact:
-        db_user: "{{ db_user }}"
+        eap_facts: 
+          db_name: "{{ db_name }}"
+          db_password:  "{{ sql_sa_password }}"
+          db_user: "{{ db_user }}"
+      delegate_to: fact_store
+      delegate_facts: yes
+      run_once: yes
 
     - name: Create custom fact directory
       file:
