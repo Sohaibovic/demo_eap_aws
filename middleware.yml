@@ -57,7 +57,7 @@
 
     - name: Find MS-SQL user
       set_fact:
-        sqluser:"{{ hostvars.fact_store.eap_facts.db_user }}"
+        sqluser: "{{ hostvars.fact_store.eap_facts.db_user }}"
 
     - name: Install needed utilities packages
       yum:
