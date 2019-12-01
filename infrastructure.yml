@@ -9,6 +9,8 @@
       include_role:
         name: ec2
         tasks_from: ec2_env_setup
+      vars:
+        ec2_lb_target_port: 8080
 
     - name: Create Database VM
       include_role:
