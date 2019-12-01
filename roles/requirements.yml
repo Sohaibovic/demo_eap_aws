@@ -8,15 +8,15 @@
 - src: sabre1041.redhat-csp-download
   name: sabre1041.redhat-csp-download
 
-- src: https://github.com/nehrman/ansible-role-f5.git
-  scm: git
-  name: nehrman.ansible-role-f5
-  version: master
+# - src: https://github.com/nehrman/ansible-role-f5.git
+#   scm: git
+#   name: nehrman.ansible-role-f5
+#   version: master
 
 - src: https://github.com/automaticdavid/ec2
-  version: devel
+  version: master
   name: ec2
   
-- src: https://github.com/automaticdavid/hc_vault_mssql_mgmt.git
-  version: master
-  name: hc_mssql
+# - src: https://github.com/automaticdavid/hc_vault_mssql_mgmt.git
+#   version: master
+#   name: hc_mssql
