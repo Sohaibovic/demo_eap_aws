@@ -86,7 +86,7 @@
     #         state: mounted
     #   when: infra == 'rhv'
 
-    - name: AWS ops
+    - name: Get files needed for install
       block:
         # - file:
         #     path: /tmp/jboss
@@ -100,9 +100,7 @@
           get_url:
             url :  "{{ s3_jdbc }}"
             dest: /tmp/         
-      when: infra == 'aws'
-
-
+      when: infra == 'aws' or infra == 'azure'
 
   roles:
 
