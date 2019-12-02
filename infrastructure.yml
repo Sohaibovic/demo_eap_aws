@@ -44,7 +44,3 @@
           'tag:Role': eap
           'instance-state-name': running
 
-
-#    - name: Refresh inventory 
-#      meta: refresh_inventory
-
