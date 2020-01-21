@@ -7,7 +7,6 @@
   version: master
   name: eap
 
-
 # - src: https://github.com/automaticdavid/hc_vault_mssql_mgmt.git
 #   version: master
 #   name: hc_mssql
