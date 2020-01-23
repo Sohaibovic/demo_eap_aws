@@ -11,6 +11,10 @@
 
   tasks:
 
+    - name: Select Artifact 
+      set_fact:
+        artifact: "{{ artifact_store }}/{{ war_name }}-{{ version }}.war"
+
     - name: Including EAP role 
       include_role:
         name: eap
