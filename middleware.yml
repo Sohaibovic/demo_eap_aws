@@ -13,7 +13,7 @@
 
     - name: Select Artifact 
       set_fact:
-        artifact: "{{ artifact_store }}/{{ war_name }}-{{ version }}.war"
+        artifact: "{{ artifact_store | regex_replace('/$','') }}/{{ war_name }}-{{ version }}.war"
 
     - name: Including EAP role 
       include_role:
