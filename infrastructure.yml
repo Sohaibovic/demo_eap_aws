@@ -7,7 +7,7 @@
 
     - name: Select VM size
       set_fact:
-        ec2_size: "{{ tee_shirt_sizes[infra_size] }}"
+        ec2_actual_size: "{{ tee_shirt_sizes[infra_size] }}"
       vars:
         tee_shirt_sizes: 
           dev: t2.medium
@@ -30,6 +30,7 @@
           Role: database
         ec2_count: 1
         ec2_ami: ami-02ace471
+        ec2_size: "{{ ec2_actual_size }}"
         ec2_lb_filters: 
           'tag:Name': "{{ ec2_scope }}"
           'tag:Role': database
@@ -44,6 +45,7 @@
           Role: eap
         ec2_count: "{{ eap_ec2_count }}"
         ec2_ami: ami-0e12cbde3e77cbb98
+        ec2_size: "{{ ec2_actual_size }}"
         ec2_lb_filters: 
           'tag:Name': "{{ ec2_scope }}"
           'tag:Role': eap
