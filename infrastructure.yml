@@ -10,9 +10,9 @@
         ec2_actual_size: "{{ tee_shirt_sizes[infra_size] }}"
       vars:
         tee_shirt_sizes: 
-          dev: m5.large
-          prod: m5.xlarge
-          perf: m5.2xlarge
+          dev: t2.medium
+          prod: t2.large
+          perf: t2.xlarge
 
     - name: Including ec2 role for VPC creation
       include_role:
