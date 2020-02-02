@@ -32,7 +32,7 @@
         ec2_ami: ami-02ace471
         ec2_size: "{{ ec2_actual_size }}"
         ec2_lb_filters: 
-          'tag:Name': "{{ ec2_scope }}"
+          'tag:Customer': "{{ customer }}"
           'tag:Role': database
           'instance-state-name': running
   
@@ -47,7 +47,7 @@
         ec2_ami: ami-0e12cbde3e77cbb98
         ec2_size: "{{ ec2_actual_size }}"
         ec2_lb_filters: 
-          'tag:Name': "{{ ec2_scope }}"
+          'tag:Customer': "{{ customer }}"
           'tag:Role': eap
           'instance-state-name': running
 

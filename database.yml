@@ -1,7 +1,7 @@
 
 ---
 - name: Install & Configure MSSQL
-  hosts: tag_Role_database:&tag_Name_{{scope}}
+  hosts: tag_Role_database:&tag_Scope_{{ customer }}
   gather_facts: yes
   become: yes
 
