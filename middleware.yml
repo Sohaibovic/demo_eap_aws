@@ -1,6 +1,6 @@
 ---
 - name: Install & Configure JBoss EAP
-  hosts: tag_Role_eap:&tag_Scope_{{ customer }}
+  hosts: tag_Role_eap:&tag_Customer_{{ customer }}
   gather_facts: yes
   become: yes
 
