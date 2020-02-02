@@ -19,8 +19,8 @@
       include_role:
         name: eap
       vars:
-        eap_tags_for_database: "tag_Role_database:&tag_Name_{{scope}}"
-        eap_tags_for_eap: "tag_Role_eap:&tag_Name_{{scope}}"
+        eap_tags_for_database: "tag_Role_database:&tag_Customer_{{ customer }}"
+        eap_tags_for_eap: "tag_Role_eap:&tag_Customer_{{ customer }}"
 
 
 
