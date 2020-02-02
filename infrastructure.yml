@@ -34,7 +34,7 @@
         ec2_lb_filters: 
           'tag:Customer': "{{ customer }}"
           'tag:Role': database
-          'instance-state-name': '!terminated'
+          'instance-state-name': [ pending, running ]
   
     - name: Create EAP VMs
       include_role:
@@ -49,5 +49,5 @@
         ec2_lb_filters: 
           'tag:Customer': "{{ customer }}"
           'tag:Role': eap
-          'instance-state-name': '!terminated'
+          'instance-state-name': [ pending, running ]
 
